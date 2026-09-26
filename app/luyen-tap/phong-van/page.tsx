@@ -1,6 +1,10 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { QuestionList } from "@/components/audio/question-list";
 
+// Noi dung doc tu Supabase co the duoc cap nhat sau khi da deploy
+// (vd: seed lai sau khi sua cau hoi/audio), nen khong duoc cache tinh.
+export const dynamic = "force-dynamic";
+
 export default async function InterviewQuestionsPage() {
   const supabase = createServerSupabaseClient();
   const { data: questions, error } = await supabase

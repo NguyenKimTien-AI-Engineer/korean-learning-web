@@ -33,7 +33,7 @@
     "section": "B",
     "section_position": 6,
     "global_order": 6,
-    "question_ko": "가족은 몇 명입니까? 가족이 어떻게 되세요? 누구 누구입니까?"
+    "question_ko": "가족은 몇 명입니까?"
   },
   {
     "section": "B",
@@ -51,7 +51,7 @@
     "section": "B",
     "section_position": 9,
     "global_order": 9,
-    "question_ko": "키가 몇 센티미터입니까? 키가 어떻게 되세요?"
+    "question_ko": "키가 몇 센티미터입니까?"
   },
   {
     "section": "B",
@@ -69,7 +69,7 @@
     "section": "B",
     "section_position": 12,
     "global_order": 12,
-    "question_ko": "지금 몇 시입니까? 지금 몇 시예요?"
+    "question_ko": "지금 몇 시입니까?"
   },
   {
     "section": "B",
@@ -171,7 +171,7 @@
     "section": "B",
     "section_position": 29,
     "global_order": 29,
-    "question_ko": "한국에 가게 되면 어떤 일을 하고 싶어요? 한국에 가서 무슨 일을 하고 싶습니까?"
+    "question_ko": "한국에 가서 무슨 일을 하고 싶습니까?"
   },
   {
     "section": "B",
