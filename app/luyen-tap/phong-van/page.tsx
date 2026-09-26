@@ -1,10 +1,26 @@
-export default function InterviewQuestionsPage() {
+import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { QuestionList } from "@/components/audio/question-list";
+
+export default async function InterviewQuestionsPage() {
+  const supabase = createServerSupabaseClient();
+  const { data: questions, error } = await supabase
+    .from("interview_questions")
+    .select("*")
+    .order("global_order", { ascending: true });
+
+  if (error) {
+    throw new Error(`Khong tai duoc cau hoi: ${error.message}`);
+  }
+
   return (
     <main className="mx-auto flex min-h-screen max-w-3xl flex-col gap-6 px-6 py-16">
-      <h1 className="text-2xl font-bold">Câu hỏi phỏng vấn</h1>
-      <p className="text-muted">
-        Danh sách 81 câu hỏi kèm audio đang được chuẩn bị — quay lại sau nhé.
-      </p>
+      <div>
+        <h1 className="text-2xl font-bold">Câu hỏi phỏng vấn</h1>
+        <p className="mt-1 text-sm text-muted">
+          {questions.length} câu hỏi — bấm vào từng câu để nghe phát âm.
+        </p>
+      </div>
+      <QuestionList questions={questions} />
     </main>
   );
 }
