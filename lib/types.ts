@@ -4,6 +4,8 @@ export type InterviewQuestion = {
   section: "B" | "C";
   section_position: number;
   question_ko: string;
+  question_vi: string | null;
+  pronunciation: string | null;
   audio_path: string;
   audio_url: string;
   duration_seconds: number | null;

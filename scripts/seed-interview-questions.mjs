@@ -9,6 +9,7 @@ import { createClient } from "@supabase/supabase-js";
 import { readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
+import { romanize } from "./lib/hangul-romanize.mjs";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SECRET_KEY = process.env.SUPABASE_SECRET_KEY;
@@ -85,6 +86,8 @@ for (const q of questions) {
           section: q.section,
           section_position: q.section_position,
           question_ko: q.question_ko,
+          question_vi: q.question_vi ?? null,
+          pronunciation: romanize(q.question_ko),
           audio_path: storagePath,
           audio_url: publicUrl,
         },
