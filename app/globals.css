@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+@theme {
+  /* Surfaces — near-black immersive dark theme */
+  --color-background: #121212;
+  --color-surface: #181818;
+  --color-surface-alt: #1f1f1f;
+  --color-card: #252525;
+
+  /* Text */
+  --color-foreground: #ffffff;
+  --color-foreground-bright: #fdfdfd;
+  --color-muted: #b3b3b3;
+
+  /* Brand accent — functional only, never decorative */
+  --color-accent: #1ed760;
+  --color-accent-border: #1db954;
+
+  /* Borders */
+  --color-border: #4d4d4d;
+  --color-border-light: #7c7c7c;
+
+  /* Semantic */
+  --color-negative: #f3727f;
+  --color-warning: #ffa42b;
+  --color-info: #539df5;
+
+  /* Typography */
+  --font-sans: var(--font-be-vietnam-pro), "Helvetica Neue", Arial, sans-serif;
+
+  /* Radius scale */
+  --radius-badge: 2px;
+  --radius-input: 4px;
+  --radius-card: 6px;
+  --radius-panel: 8px;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-card: 0px 8px 8px rgba(0, 0, 0, 0.3);
+  --shadow-dialog: 0px 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+}
