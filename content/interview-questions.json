@@ -1,0 +1,488 @@
+[
+  {
+    "section": "B",
+    "section_position": 1,
+    "global_order": 1,
+    "question_ko": "안녕하세요? 만나서 반갑습니다."
+  },
+  {
+    "section": "B",
+    "section_position": 2,
+    "global_order": 2,
+    "question_ko": "나이가 몇 살입니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 3,
+    "global_order": 3,
+    "question_ko": "생일이 언제입니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 4,
+    "global_order": 4,
+    "question_ko": "결혼했습니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 5,
+    "global_order": 5,
+    "question_ko": "아기를 낳았습니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 6,
+    "global_order": 6,
+    "question_ko": "가족은 몇 명입니까? 가족이 어떻게 되세요? 누구 누구입니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 7,
+    "global_order": 7,
+    "question_ko": "부모님 직업이 무엇입니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 8,
+    "global_order": 8,
+    "question_ko": "부모님 연세가 어떻게 되세요?"
+  },
+  {
+    "section": "B",
+    "section_position": 9,
+    "global_order": 9,
+    "question_ko": "키가 몇 센티미터입니까? 키가 어떻게 되세요?"
+  },
+  {
+    "section": "B",
+    "section_position": 10,
+    "global_order": 10,
+    "question_ko": "몸무게가 몇 킬로그램입니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 11,
+    "global_order": 11,
+    "question_ko": "취미가 무엇입니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 12,
+    "global_order": 12,
+    "question_ko": "지금 몇 시입니까? 지금 몇 시예요?"
+  },
+  {
+    "section": "B",
+    "section_position": 13,
+    "global_order": 13,
+    "question_ko": "어떤 계절을 좋아합니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 14,
+    "global_order": 14,
+    "question_ko": "오늘은 무슨 요일입니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 15,
+    "global_order": 15,
+    "question_ko": "오늘은 몇 월 며칠입니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 16,
+    "global_order": 16,
+    "question_ko": "오늘 날씨가 어때요?"
+  },
+  {
+    "section": "B",
+    "section_position": 17,
+    "global_order": 17,
+    "question_ko": "무슨 운동을 좋아합니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 18,
+    "global_order": 18,
+    "question_ko": "무슨 색깔을 좋아합니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 19,
+    "global_order": 19,
+    "question_ko": "한국어를 얼마 동안 배웠습니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 20,
+    "global_order": 20,
+    "question_ko": "한국어 공부가 어땠습니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 21,
+    "global_order": 21,
+    "question_ko": "어디에서 한국어를 공부했어요?"
+  },
+  {
+    "section": "B",
+    "section_position": 22,
+    "global_order": 22,
+    "question_ko": "한국에 친척이나 아는 사람이 있습니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 23,
+    "global_order": 23,
+    "question_ko": "시간이 있을 때 무엇을 하고 싶습니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 24,
+    "global_order": 24,
+    "question_ko": "한국 문화에 대해 아는 것이 있습니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 25,
+    "global_order": 25,
+    "question_ko": "한국의 수도가 무엇입니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 26,
+    "global_order": 26,
+    "question_ko": "한국의 전통 옷은 무엇입니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 27,
+    "global_order": 27,
+    "question_ko": "한국에 대해 아는 게 있어요?"
+  },
+  {
+    "section": "B",
+    "section_position": 28,
+    "global_order": 28,
+    "question_ko": "왜 한국에 가고 싶습니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 29,
+    "global_order": 29,
+    "question_ko": "한국에 가게 되면 어떤 일을 하고 싶어요? 한국에 가서 무슨 일을 하고 싶습니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 30,
+    "global_order": 30,
+    "question_ko": "한국에서 어느 쪽으로 일을 하고 싶습니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 31,
+    "global_order": 31,
+    "question_ko": "가족 중에 한국에서 일하는 사람이 있습니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 32,
+    "global_order": 32,
+    "question_ko": "요즘 일을 하세요?"
+  },
+  {
+    "section": "B",
+    "section_position": 33,
+    "global_order": 33,
+    "question_ko": "한국말을 잘할 수 있어요?"
+  },
+  {
+    "section": "B",
+    "section_position": 34,
+    "global_order": 34,
+    "question_ko": "무엇을 타고 왔어요?"
+  },
+  {
+    "section": "B",
+    "section_position": 35,
+    "global_order": 35,
+    "question_ko": "여기까지 얼마나 걸렸어요?"
+  },
+  {
+    "section": "B",
+    "section_position": 36,
+    "global_order": 36,
+    "question_ko": "전에 무슨 일을 했습니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 37,
+    "global_order": 37,
+    "question_ko": "컴퓨터를 할 수 있어요?"
+  },
+  {
+    "section": "B",
+    "section_position": 38,
+    "global_order": 38,
+    "question_ko": "왜 우리가 당신을 고용해야 합니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 39,
+    "global_order": 39,
+    "question_ko": "외국에 가 본 적이 있어요?"
+  },
+  {
+    "section": "B",
+    "section_position": 40,
+    "global_order": 40,
+    "question_ko": "무슨 한국 음식을 좋아합니까?"
+  },
+  {
+    "section": "B",
+    "section_position": 41,
+    "global_order": 41,
+    "question_ko": "기숙사에서 다른 사람과 같이 살 때 무엇이 중요합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 1,
+    "global_order": 42,
+    "question_ko": "직장 동료하고 어떻게 지낼 거예요?"
+  },
+  {
+    "section": "C",
+    "section_position": 2,
+    "global_order": 43,
+    "question_ko": "직장 동료가 바쁘면 어떻게 할 거예요?"
+  },
+  {
+    "section": "C",
+    "section_position": 3,
+    "global_order": 44,
+    "question_ko": "새로운 동료들과 잘 지내기 위해 무엇을 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 4,
+    "global_order": 45,
+    "question_ko": "동료와 의견이 다르면 어떻게 할 거예요?"
+  },
+  {
+    "section": "C",
+    "section_position": 5,
+    "global_order": 46,
+    "question_ko": "동료가 어려움을 겪으면 어떻게 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 6,
+    "global_order": 47,
+    "question_ko": "동료와 갈등이 있으면 어떻게 할 거예요?"
+  },
+  {
+    "section": "C",
+    "section_position": 7,
+    "global_order": 48,
+    "question_ko": "직장에서 좋은 관계를 유지하려면 어떻게 해야 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 8,
+    "global_order": 49,
+    "question_ko": "상사가 당신의 의견에 반대하면 어떻게 할 겁니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 9,
+    "global_order": 50,
+    "question_ko": "친구가 근무 중 개인 일을 하자고 하면 어떻게 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 10,
+    "global_order": 51,
+    "question_ko": "상대가 내 말을 안 들으면 어떻게 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 11,
+    "global_order": 52,
+    "question_ko": "회사에 일이 많으면 어떻게 하겠습니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 12,
+    "global_order": 53,
+    "question_ko": "일하다가 실수가 생기면 어떻게 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 13,
+    "global_order": 54,
+    "question_ko": "문제를 어떻게 발견합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 14,
+    "global_order": 55,
+    "question_ko": "작업하다가 사고가 나면 어떻게 할 거예요?"
+  },
+  {
+    "section": "C",
+    "section_position": 15,
+    "global_order": 56,
+    "question_ko": "기술적인 문제가 생기면 어떻게 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 16,
+    "global_order": 57,
+    "question_ko": "불량품이 많이 나면 어떻게 할 거예요?"
+  },
+  {
+    "section": "C",
+    "section_position": 17,
+    "global_order": 58,
+    "question_ko": "새로운 장비를 사용할 줄 모를 때는 어떻게 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 18,
+    "global_order": 59,
+    "question_ko": "작업 중 도구가 고장 나면 어떻게 하시겠습니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 19,
+    "global_order": 60,
+    "question_ko": "업무를 잘 이해하지 못했을 때는 어떻게 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 20,
+    "global_order": 61,
+    "question_ko": "모르는 일이 있으면 어떻게 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 21,
+    "global_order": 62,
+    "question_ko": "해결 방법을 모를 때는 어떻게 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 22,
+    "global_order": 63,
+    "question_ko": "작업하다가 다치면 어떻게 하겠습니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 23,
+    "global_order": 64,
+    "question_ko": "다른 동료가 다치면 어떻게 하겠습니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 24,
+    "global_order": 65,
+    "question_ko": "공장에 불이 나면 어떻게 하겠습니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 25,
+    "global_order": 66,
+    "question_ko": "회사 규칙을 왜 잘 지켜야 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 26,
+    "global_order": 67,
+    "question_ko": "문제가 생겼을 때 누구에게 먼저 보고합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 27,
+    "global_order": 68,
+    "question_ko": "업무를 개선한 경험이 있습니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 28,
+    "global_order": 69,
+    "question_ko": "두 가지 방법 중 선택할 때는 어떻게 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 29,
+    "global_order": 70,
+    "question_ko": "기술을 어떻게 향상시키나요?"
+  },
+  {
+    "section": "C",
+    "section_position": 30,
+    "global_order": 71,
+    "question_ko": "한국에서 사용할 수 있는 기술이 있어요?"
+  },
+  {
+    "section": "C",
+    "section_position": 31,
+    "global_order": 72,
+    "question_ko": "다른 사람보다 잘할 수 있는 기술이 있어요?"
+  },
+  {
+    "section": "C",
+    "section_position": 32,
+    "global_order": 73,
+    "question_ko": "논쟁이 있을 때는 어떻게 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 33,
+    "global_order": 74,
+    "question_ko": "팀에서 오해가 생기면 어떻게 해결합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 34,
+    "global_order": 75,
+    "question_ko": "다른 사람의 의견을 잘 듣는 편입니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 35,
+    "global_order": 76,
+    "question_ko": "상사에게 건의할 일이 있으면 어떻게 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 36,
+    "global_order": 77,
+    "question_ko": "근무시간 중에 외출해야 할 경우에는 어떻게 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 37,
+    "global_order": 78,
+    "question_ko": "회사가 월급을 안 주면 어떻게 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 38,
+    "global_order": 79,
+    "question_ko": "직장에서 가장 중요한 것은 무엇이라고 생각합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 39,
+    "global_order": 80,
+    "question_ko": "피곤해도 일을 성실히 합니까?"
+  },
+  {
+    "section": "C",
+    "section_position": 40,
+    "global_order": 81,
+    "question_ko": "회사에 일이 없거나 잔업이 없으면 어떻게 하겠습니까?"
+  }
+]
