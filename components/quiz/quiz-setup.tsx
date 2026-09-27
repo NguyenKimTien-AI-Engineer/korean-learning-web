@@ -1,6 +1,7 @@
 "use client";
 
-import { ListChecks, Trophy } from "lucide-react";
+import Link from "next/link";
+import { ListChecks, Trophy, LogIn } from "lucide-react";
 import type { BestScore } from "@/lib/quiz";
 
 const LENGTH_OPTIONS = [5, 10, 20];
@@ -8,10 +9,12 @@ const LENGTH_OPTIONS = [5, 10, 20];
 export function QuizSetup({
   totalQuestions,
   bestScore,
+  isLoggedIn,
   onStart,
 }: {
   totalQuestions: number;
   bestScore: BestScore;
+  isLoggedIn: boolean;
   onStart: (count: number) => void;
 }) {
   return (
@@ -33,6 +36,16 @@ export function QuizSetup({
           <Trophy className="h-4 w-4 text-accent" aria-hidden />
           Điểm cao nhất: {bestScore.score}/{bestScore.total}
         </div>
+      ) : null}
+
+      {!isLoggedIn ? (
+        <Link
+          href="/dang-nhap"
+          className="flex items-center gap-2 rounded-pill bg-surface-alt px-4 py-2 text-sm text-muted hover:text-foreground"
+        >
+          <LogIn className="h-4 w-4" aria-hidden />
+          Đăng nhập để lưu điểm và lịch sử làm bài
+        </Link>
       ) : null}
 
       <div className="flex flex-col gap-3">

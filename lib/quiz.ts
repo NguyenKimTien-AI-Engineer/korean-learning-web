@@ -1,5 +1,9 @@
-import { useSyncExternalStore } from "react";
-import type { InterviewQuestion } from "@/lib/types";
+"use client";
+
+import { useEffect, useSyncExternalStore } from "react";
+import type { InterviewQuestion, QuizAttempt } from "@/lib/types";
+import { createBrowserSupabaseClient } from "@/lib/supabase/client";
+import { useAuth } from "@/components/auth/auth-provider";
 
 export type QuizItem = {
   question: InterviewQuestion;
@@ -40,62 +44,92 @@ export function buildQuiz(
   });
 }
 
-// --- Diem cao nhat, luu localStorage theo tung chu de ---
-
-const KEY_PREFIX = "korean-learning:quiz-best:";
-const EVENT_NAME = "korean-learning:quiz-best-changed";
+// --- Lich su lam quiz theo tung user, luu Supabase (bang quiz_attempts) ---
+// Diem cao nhat la gia tri suy ra tu danh sach lich su, khong luu rieng.
 
 export type BestScore = { score: number; total: number } | null;
 
-function keyFor(section: string) {
-  return `${KEY_PREFIX}${section}`;
-}
+const EMPTY_ATTEMPTS: QuizAttempt[] = [];
+const cache = new Map<string, QuizAttempt[]>();
+const listeners = new Set<() => void>();
 
-function readBest(section: string): BestScore {
-  try {
-    const raw = window.localStorage.getItem(keyFor(section));
-    return raw ? JSON.parse(raw) : null;
-  } catch {
-    return null;
-  }
-}
-
-const cache = new Map<string, BestScore>();
-
-function getSnapshot(section: string): BestScore {
-  if (typeof window === "undefined") return null;
-  if (!cache.has(section)) {
-    cache.set(section, readBest(section));
-  }
-  return cache.get(section) ?? null;
+function notify() {
+  listeners.forEach((cb) => cb());
 }
 
 function subscribe(callback: () => void) {
-  window.addEventListener(EVENT_NAME, callback);
-  return () => window.removeEventListener(EVENT_NAME, callback);
+  listeners.add(callback);
+  return () => listeners.delete(callback);
 }
 
-export function saveBestScoreIfBetter(
+function cacheKey(userId: string, section: string) {
+  return `${userId}:${section}`;
+}
+
+async function fetchAttempts(userId: string, section: string) {
+  const supabase = createBrowserSupabaseClient();
+  const { data } = await supabase
+    .from("quiz_attempts")
+    .select("*")
+    .eq("user_id", userId)
+    .eq("section", section)
+    .order("created_at", { ascending: false });
+  return data ?? [];
+}
+
+export async function saveQuizAttempt(
+  userId: string,
   section: string,
   score: number,
   total: number,
 ) {
-  if (typeof window === "undefined" || total === 0) return;
-  const current = readBest(section);
-  const newPercent = score / total;
-  const currentPercent = current ? current.score / current.total : -1;
-  if (newPercent <= currentPercent) return;
+  const supabase = createBrowserSupabaseClient();
+  const { data, error } = await supabase
+    .from("quiz_attempts")
+    .insert({ user_id: userId, section, score, total })
+    .select()
+    .single();
 
-  const next = { score, total };
-  window.localStorage.setItem(keyFor(section), JSON.stringify(next));
-  cache.set(section, next);
-  window.dispatchEvent(new Event(EVENT_NAME));
+  if (error || !data) return;
+
+  const key = cacheKey(userId, section);
+  const current = cache.get(key) ?? [];
+  cache.set(key, [data, ...current]);
+  notify();
+}
+
+export function useQuizAttempts(section: string): QuizAttempt[] {
+  const { user } = useAuth();
+  const key = user ? cacheKey(user.id, section) : null;
+
+  useEffect(() => {
+    if (!key || !user || cache.has(key)) return;
+    let cancelled = false;
+    fetchAttempts(user.id, section).then((rows) => {
+      if (cancelled) return;
+      cache.set(key, rows);
+      notify();
+    });
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key]);
+
+  return useSyncExternalStore(
+    subscribe,
+    () => (key ? (cache.get(key) ?? EMPTY_ATTEMPTS) : EMPTY_ATTEMPTS),
+    () => EMPTY_ATTEMPTS,
+  );
 }
 
 export function useBestScore(section: string): BestScore {
-  return useSyncExternalStore(
-    subscribe,
-    () => getSnapshot(section),
-    () => null,
-  );
+  const attempts = useQuizAttempts(section);
+  if (attempts.length === 0) return null;
+  return attempts.reduce<BestScore>((best, a) => {
+    if (!best || a.score / a.total > best.score / best.total) {
+      return { score: a.score, total: a.total };
+    }
+    return best;
+  }, null);
 }

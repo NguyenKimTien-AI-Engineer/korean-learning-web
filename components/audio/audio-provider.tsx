@@ -10,6 +10,7 @@ import {
 } from "react";
 import type { InterviewQuestion } from "@/lib/types";
 import { markListened } from "@/lib/progress";
+import { useAuth } from "@/components/auth/auth-provider";
 
 type AudioContextValue = {
   current: InterviewQuestion | null;
@@ -26,6 +27,7 @@ export function AudioProvider({
   section: string;
   children: ReactNode;
 }) {
+  const { user } = useAuth();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [current, setCurrent] = useState<InterviewQuestion | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -62,7 +64,9 @@ export function AudioProvider({
         className="hidden"
         onEnded={() => {
           setIsPlaying(false);
-          if (current) markListened(section, current.global_order);
+          if (current && user) {
+            markListened(user.id, section, current.global_order);
+          }
         }}
       />
     </AudioCtx.Provider>

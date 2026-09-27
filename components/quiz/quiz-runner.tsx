@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import type { InterviewQuestion } from "@/lib/types";
-import { buildQuiz, saveBestScoreIfBetter, useBestScore } from "@/lib/quiz";
+import { buildQuiz, saveQuizAttempt, useBestScore } from "@/lib/quiz";
 import type { QuizItem } from "@/lib/quiz";
+import { useAuth } from "@/components/auth/auth-provider";
 import { QuizSetup } from "./quiz-setup";
 import { QuizQuestion } from "./quiz-question";
 import { QuizResult, type QuizAnswer } from "./quiz-result";
@@ -19,6 +20,7 @@ export function QuizRunner({
   section: string;
   topicHref: string;
 }) {
+  const { user } = useAuth();
   const bestScore = useBestScore(section);
   const [phase, setPhase] = useState<Phase>("setup");
   const [items, setItems] = useState<QuizItem[]>([]);
@@ -39,7 +41,9 @@ export function QuizRunner({
 
     if (currentIndex + 1 >= items.length) {
       const score = nextAnswers.filter((a) => a.correct).length;
-      saveBestScoreIfBetter(section, score, nextAnswers.length);
+      if (user) {
+        saveQuizAttempt(user.id, section, score, nextAnswers.length);
+      }
       setPhase("finished");
     } else {
       setCurrentIndex((i) => i + 1);
@@ -55,6 +59,7 @@ export function QuizRunner({
       <QuizSetup
         totalQuestions={questions.filter((q) => q.question_vi).length}
         bestScore={bestScore}
+        isLoggedIn={!!user}
         onStart={handleStart}
       />
     );

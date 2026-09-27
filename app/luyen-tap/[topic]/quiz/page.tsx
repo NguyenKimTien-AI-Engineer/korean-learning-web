@@ -14,7 +14,7 @@ export default async function QuizPage({
   const topic = getTopic(topicSlug);
   if (!topic) notFound();
 
-  const supabase = createServerSupabaseClient();
+  const supabase = await createServerSupabaseClient();
   const { data: questions, error } = await supabase
     .from("interview_questions")
     .select("*")
