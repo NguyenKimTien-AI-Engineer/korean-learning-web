@@ -18,7 +18,7 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden w-64 shrink-0 flex-col gap-1 border-r border-border bg-background px-3 py-6 sm:flex">
+    <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col gap-1 overflow-y-auto border-r border-border bg-background px-3 py-6 sm:flex">
       <div className="mb-6 flex items-center gap-2 px-3">
         <GraduationCap className="h-6 w-6 text-accent" aria-hidden />
         <div>
