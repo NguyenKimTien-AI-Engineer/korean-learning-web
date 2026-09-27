@@ -18,8 +18,14 @@ export const QuestionCard = forwardRef<
 
   return (
     <div ref={ref} className="[perspective:1200px]">
+      {/*
+        Ca 2 mat dung chung 1 grid cell ("[grid-area:1/1]") thay vi
+        "absolute inset-0" — nho vay khung card tu gian theo mat NAO
+        cao hon (thay vi chieu cao co dinh), tranh tran chu khi cau
+        dai hoac man hinh hep khien chu xuong dong nhieu hon.
+      */}
       <div
-        className={`relative h-56 w-full cursor-pointer transition-transform duration-500 [transform-style:preserve-3d] ${
+        className={`relative grid w-full min-h-52 cursor-pointer transition-transform duration-500 [transform-style:preserve-3d] ${
           isFlipped ? "[transform:rotateY(180deg)]" : ""
         }`}
         onClick={onToggleFlip}
@@ -31,11 +37,11 @@ export const QuestionCard = forwardRef<
       >
         {/* Front */}
         <div
-          className={`absolute inset-0 flex flex-col justify-between rounded-panel p-4 shadow-card [backface-visibility:hidden] ${
+          className={`col-start-1 row-start-1 flex min-h-52 flex-col justify-between gap-3 rounded-panel p-4 shadow-card [backface-visibility:hidden] ${
             isActive ? "bg-surface-alt" : "bg-surface"
           }`}
         >
-          <div className="flex items-start justify-between">
+          <div className="flex items-start justify-between gap-2">
             <span className="text-xs text-muted">#{question.global_order}</span>
             {isListened ? (
               <span className="text-xs text-accent" title="Đã nghe">
@@ -44,11 +50,11 @@ export const QuestionCard = forwardRef<
             ) : null}
           </div>
 
-          <p className="line-clamp-4 text-base font-bold leading-snug">
+          <p className="text-base font-bold leading-snug">
             {question.question_ko}
           </p>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-2">
             <span className="text-xs text-muted">Bấm để xem nghĩa</span>
             <button
               type="button"
@@ -57,7 +63,7 @@ export const QuestionCard = forwardRef<
                 toggle(question);
               }}
               aria-label="Phát âm"
-              className={`flex h-10 w-10 items-center justify-center rounded-full bg-surface-alt text-base transition-colors ${
+              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-alt text-base transition-colors ${
                 isActive ? "text-accent" : "text-foreground"
               }`}
             >
@@ -68,7 +74,7 @@ export const QuestionCard = forwardRef<
 
         {/* Back */}
         <div
-          className={`absolute inset-0 flex flex-col justify-between rounded-panel border border-border p-4 shadow-card [backface-visibility:hidden] [transform:rotateY(180deg)] ${
+          className={`col-start-1 row-start-1 flex min-h-52 flex-col justify-between gap-3 rounded-panel border border-border p-4 shadow-card [backface-visibility:hidden] [transform:rotateY(180deg)] ${
             isActive ? "bg-surface-alt" : "bg-surface"
           }`}
         >
@@ -86,7 +92,7 @@ export const QuestionCard = forwardRef<
             </p>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-2">
             <span className="text-xs text-muted">Bấm để quay lại</span>
             <button
               type="button"
@@ -95,7 +101,7 @@ export const QuestionCard = forwardRef<
                 toggle(question);
               }}
               aria-label="Phát âm"
-              className={`flex h-10 w-10 items-center justify-center rounded-full bg-surface-alt text-base transition-colors ${
+              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-alt text-base transition-colors ${
                 isActive ? "text-accent" : "text-foreground"
               }`}
             >

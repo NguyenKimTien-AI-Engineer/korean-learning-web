@@ -8,7 +8,7 @@ export function NowPlayingBar() {
   if (!current) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-4 border-t border-border bg-surface px-6 py-3 shadow-dialog sm:left-64">
+    <div className="fixed inset-x-0 bottom-[calc(4rem+env(safe-area-inset-bottom))] z-50 flex items-center gap-4 border-t border-border bg-surface px-4 py-3 shadow-dialog sm:inset-x-auto sm:right-0 sm:bottom-0 sm:left-64 sm:px-6">
       <button
         type="button"
         onClick={() => toggle(current)}

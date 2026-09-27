@@ -33,7 +33,7 @@ function ShuffleButton({
     <button
       type="button"
       onClick={handleShuffle}
-      className="flex items-center gap-2 rounded-pill bg-surface-alt px-4 py-2 text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-border"
+      className="flex shrink-0 items-center gap-2 whitespace-nowrap rounded-pill bg-surface-alt px-3 py-2 text-xs font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-border sm:px-4 sm:text-sm"
     >
       🔀 Ngẫu nhiên
     </button>
@@ -88,8 +88,8 @@ function GridBody({
           placeholder="Tìm câu hỏi (tiếng Hàn hoặc tiếng Việt)..."
           className="w-full rounded-pill bg-surface-alt px-4 py-2 text-sm text-foreground placeholder:text-muted focus:outline-none sm:max-w-xs"
         />
-        <div className="flex items-center gap-3">
-          <span className="text-xs text-muted">
+        <div className="flex items-center justify-between gap-3">
+          <span className="shrink-0 whitespace-nowrap text-xs text-muted">
             {listened.size}/{questions.length} đã nghe
           </span>
           <ShuffleButton
