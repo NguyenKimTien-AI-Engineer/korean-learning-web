@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
+import { Search, Shuffle } from "lucide-react";
 import type { InterviewQuestion } from "@/lib/types";
 import { AudioProvider, useAudio } from "@/components/audio/audio-provider";
 import { QuestionCard } from "@/components/audio/question-card";
@@ -35,7 +36,8 @@ function ShuffleButton({
       onClick={handleShuffle}
       className="flex shrink-0 items-center gap-2 whitespace-nowrap rounded-pill bg-surface-alt px-3 py-2 text-xs font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-border sm:px-4 sm:text-sm"
     >
-      🔀 Ngẫu nhiên
+      <Shuffle className="h-3.5 w-3.5" aria-hidden />
+      Ngẫu nhiên
     </button>
   );
 }
@@ -81,13 +83,19 @@ function GridBody({
   return (
     <>
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Tìm câu hỏi (tiếng Hàn hoặc tiếng Việt)..."
-          className="w-full rounded-pill bg-surface-alt px-4 py-2 text-sm text-foreground placeholder:text-muted focus:outline-none sm:max-w-xs"
-        />
+        <div className="relative w-full sm:max-w-xs">
+          <Search
+            className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted"
+            aria-hidden
+          />
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Tìm câu hỏi (tiếng Hàn hoặc tiếng Việt)..."
+            className="w-full rounded-pill bg-surface-alt py-2 pr-4 pl-9 text-sm text-foreground placeholder:text-muted focus:outline-none"
+          />
+        </div>
         <div className="flex items-center justify-between gap-3">
           <span className="shrink-0 whitespace-nowrap text-xs text-muted">
             {listened.size}/{questions.length} đã nghe

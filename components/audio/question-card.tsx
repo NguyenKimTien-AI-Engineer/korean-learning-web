@@ -1,8 +1,36 @@
 "use client";
 
 import { forwardRef } from "react";
+import { Play, Pause, CheckCircle2, Languages, Volume2 } from "lucide-react";
 import type { InterviewQuestion } from "@/lib/types";
 import { useAudio } from "./audio-provider";
+
+function PlayButton({
+  isActive,
+  isPlaying,
+  onClick,
+}: {
+  isActive: boolean;
+  isPlaying: boolean;
+  onClick: (e: React.MouseEvent) => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label="Phát âm"
+      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-alt transition-colors ${
+        isActive ? "text-accent" : "text-foreground"
+      }`}
+    >
+      {isActive && isPlaying ? (
+        <Pause className="h-4 w-4 fill-current" aria-hidden />
+      ) : (
+        <Play className="h-4 w-4 fill-current" aria-hidden />
+      )}
+    </button>
+  );
+}
 
 export const QuestionCard = forwardRef<
   HTMLDivElement,
@@ -15,6 +43,11 @@ export const QuestionCard = forwardRef<
 >(function QuestionCard({ question, isFlipped, isListened, onToggleFlip }, ref) {
   const { current, isPlaying, toggle } = useAudio();
   const isActive = current?.global_order === question.global_order;
+
+  function handlePlayClick(e: React.MouseEvent) {
+    e.stopPropagation();
+    toggle(question);
+  }
 
   return (
     <div ref={ref} className="[perspective:1200px]">
@@ -44,8 +77,12 @@ export const QuestionCard = forwardRef<
           <div className="flex items-start justify-between gap-2">
             <span className="text-xs text-muted">#{question.global_order}</span>
             {isListened ? (
-              <span className="text-xs text-accent" title="Đã nghe">
-                ✓ đã nghe
+              <span
+                className="flex items-center gap-1 text-xs text-accent"
+                title="Đã nghe"
+              >
+                <CheckCircle2 className="h-3.5 w-3.5" aria-hidden />
+                đã nghe
               </span>
             ) : null}
           </div>
@@ -56,19 +93,11 @@ export const QuestionCard = forwardRef<
 
           <div className="flex items-center justify-between gap-2">
             <span className="text-xs text-muted">Bấm để xem nghĩa</span>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                toggle(question);
-              }}
-              aria-label="Phát âm"
-              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-alt text-base transition-colors ${
-                isActive ? "text-accent" : "text-foreground"
-              }`}
-            >
-              {isActive && isPlaying ? "❚❚" : "▶"}
-            </button>
+            <PlayButton
+              isActive={isActive}
+              isPlaying={isPlaying}
+              onClick={handlePlayClick}
+            />
           </div>
         </div>
 
@@ -79,14 +108,20 @@ export const QuestionCard = forwardRef<
           }`}
         >
           <div>
-            <span className="text-xs text-muted">Nghĩa tiếng Việt</span>
+            <span className="flex items-center gap-1 text-xs text-muted">
+              <Languages className="h-3.5 w-3.5" aria-hidden />
+              Nghĩa tiếng Việt
+            </span>
             <p className="mt-1 text-sm font-semibold leading-snug">
               {question.question_vi ?? "Đang cập nhật"}
             </p>
           </div>
 
           <div>
-            <span className="text-xs text-muted">Phiên âm</span>
+            <span className="flex items-center gap-1 text-xs text-muted">
+              <Volume2 className="h-3.5 w-3.5" aria-hidden />
+              Phiên âm
+            </span>
             <p className="mt-1 text-sm italic leading-snug text-muted">
               {question.pronunciation ?? "—"}
             </p>
@@ -94,19 +129,11 @@ export const QuestionCard = forwardRef<
 
           <div className="flex items-center justify-between gap-2">
             <span className="text-xs text-muted">Bấm để quay lại</span>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                toggle(question);
-              }}
-              aria-label="Phát âm"
-              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-alt text-base transition-colors ${
-                isActive ? "text-accent" : "text-foreground"
-              }`}
-            >
-              {isActive && isPlaying ? "❚❚" : "▶"}
-            </button>
+            <PlayButton
+              isActive={isActive}
+              isPlaying={isPlaying}
+              onClick={handlePlayClick}
+            />
           </div>
         </div>
       </div>

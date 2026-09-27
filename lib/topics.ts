@@ -1,3 +1,5 @@
+import { MessagesSquare, Handshake, type LucideIcon } from "lucide-react";
+
 export type TopicSlug = "hoi-thoai-co-ban" | "ung-xu";
 
 export type Topic = {
@@ -5,7 +7,7 @@ export type Topic = {
   section: "B" | "C";
   title: string;
   description: string;
-  icon: string;
+  icon: LucideIcon;
   accent: string;
   totalCount: number;
 };
@@ -17,7 +19,7 @@ export const TOPICS: Topic[] = [
     title: "Câu hỏi hội thoại cơ bản",
     description:
       "Bản thân, gia đình, sở thích, thời gian — nền tảng để bắt đầu mọi cuộc phỏng vấn.",
-    icon: "💬",
+    icon: MessagesSquare,
     accent: "from-sky-500/20 to-sky-500/0",
     totalCount: 41,
   },
@@ -27,7 +29,7 @@ export const TOPICS: Topic[] = [
     title: "Câu hỏi ứng xử",
     description:
       "Tình huống với đồng nghiệp, cấp trên, sự cố tại nơi làm việc — luyện phản xạ trả lời.",
-    icon: "🤝",
+    icon: Handshake,
     accent: "from-amber-500/20 to-amber-500/0",
     totalCount: 40,
   },

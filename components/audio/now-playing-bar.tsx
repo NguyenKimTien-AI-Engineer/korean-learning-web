@@ -1,5 +1,6 @@
 "use client";
 
+import { Play, Pause } from "lucide-react";
 import { useAudio } from "./audio-provider";
 
 export function NowPlayingBar() {
@@ -13,11 +14,15 @@ export function NowPlayingBar() {
         type="button"
         onClick={() => toggle(current)}
         aria-label={isPlaying ? "Tạm dừng" : "Phát"}
-        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-surface-alt text-sm ${
+        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-surface-alt ${
           isPlaying ? "text-accent" : "text-foreground"
         }`}
       >
-        {isPlaying ? "❚❚" : "▶"}
+        {isPlaying ? (
+          <Pause className="h-4 w-4 fill-current" aria-hidden />
+        ) : (
+          <Play className="h-4 w-4 fill-current" aria-hidden />
+        )}
       </button>
       <span className="truncate text-sm">
         <span className="text-muted">#{current.global_order}</span>{" "}

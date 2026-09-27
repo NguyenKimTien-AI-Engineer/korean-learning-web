@@ -1,10 +1,18 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
+import { Play } from "lucide-react";
 import type { Topic } from "@/lib/topics";
 import { useListenedSet } from "@/lib/progress";
 
-export function TopicCard({ topic }: { topic: Topic }) {
+export function TopicCard({
+  topic,
+  icon,
+}: {
+  topic: Omit<Topic, "icon">;
+  icon: ReactNode;
+}) {
   const listenedCount = useListenedSet(topic.section).size;
   const percent = Math.round((listenedCount / topic.totalCount) * 100);
 
@@ -14,9 +22,11 @@ export function TopicCard({ topic }: { topic: Topic }) {
       className={`group relative flex flex-col justify-between overflow-hidden rounded-panel bg-gradient-to-br ${topic.accent} bg-surface p-6 shadow-card transition-transform hover:-translate-y-1`}
     >
       <div className="flex items-start justify-between">
-        <span className="text-4xl">{topic.icon}</span>
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-surface-alt">
+          {icon}
+        </span>
         <span className="flex h-11 w-11 items-center justify-center rounded-full bg-surface-alt text-accent opacity-0 transition-opacity group-hover:opacity-100">
-          ▶
+          <Play className="h-4 w-4 fill-current" aria-hidden />
         </span>
       </div>
 

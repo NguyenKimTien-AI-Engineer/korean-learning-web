@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Home } from "lucide-react";
 import { TOPICS } from "@/lib/topics";
 
 const NAV_ITEMS = [
-  { href: "/", label: "Trang chủ", icon: "🏠" },
+  { href: "/", label: "Trang chủ", icon: Home },
   ...TOPICS.map((t) => ({
     href: `/luyen-tap/${t.slug}`,
-    label: t.icon,
+    label: t.title,
     icon: t.icon,
   })),
 ];
@@ -21,17 +22,17 @@ export function MobileNav() {
       <div className="flex h-16 items-center justify-around">
         {NAV_ITEMS.map((item) => {
           const isActive = pathname === item.href;
+          const Icon = item.icon;
           return (
             <Link
               key={item.href}
               href={item.href}
+              aria-label={item.label}
               className={`flex flex-col items-center gap-0.5 px-4 py-1 text-xs ${
                 isActive ? "text-accent" : "text-muted"
               }`}
             >
-              <span className="text-lg" aria-hidden>
-                {item.icon}
-              </span>
+              <Icon className="h-5 w-5" aria-hidden />
               {item.href === "/" ? item.label : null}
             </Link>
           );

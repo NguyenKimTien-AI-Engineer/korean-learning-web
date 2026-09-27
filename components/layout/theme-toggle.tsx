@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
+import { Sun, Moon } from "lucide-react";
 
 const noopSubscribe = () => () => {};
 
@@ -28,7 +29,11 @@ export function ThemeToggle() {
       aria-label={isDark ? "Chuyển sang giao diện sáng" : "Chuyển sang giao diện tối"}
       className="flex h-9 w-9 items-center justify-center rounded-full bg-surface-alt text-foreground transition-colors hover:bg-border"
     >
-      {isDark ? "☀️" : "🌙"}
+      {isDark ? (
+        <Sun className="h-[18px] w-[18px]" aria-hidden />
+      ) : (
+        <Moon className="h-[18px] w-[18px]" aria-hidden />
+      )}
     </button>
   );
 }

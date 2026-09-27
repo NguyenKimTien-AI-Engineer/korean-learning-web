@@ -15,8 +15,8 @@ export default function Home() {
       </section>
 
       <section className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        {TOPICS.map((topic) => (
-          <TopicCard key={topic.slug} topic={topic} />
+        {TOPICS.map(({ icon: Icon, ...topic }) => (
+          <TopicCard key={topic.slug} topic={topic} icon={<Icon className="h-6 w-6" aria-hidden />} />
         ))}
       </section>
     </div>
