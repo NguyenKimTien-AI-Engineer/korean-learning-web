@@ -1,21 +1,33 @@
-import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@supabase/ssr";
+import { cookies } from "next/headers";
 import type { Database } from "@/lib/types";
 
 /**
- * Client dung trong Server Components. MVP khong co dang nhap nen khong
- * can quan ly cookie/session — chi doc du lieu cong khai qua publishable key.
+ * Client dung trong Server Components / Route Handlers. Doc/ghi cookie
+ * session qua next/headers — can middleware.ts refresh token o moi request.
  */
-export function createServerSupabaseClient() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+export async function createServerSupabaseClient() {
+  const cookieStore = await cookies();
 
-  if (!url || !publishableKey) {
-    throw new Error(
-      "Thieu NEXT_PUBLIC_SUPABASE_URL hoac NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY trong .env.local",
-    );
-  }
-
-  return createClient<Database>(url, publishableKey, {
-    auth: { persistSession: false },
-  });
+  return createServerClient<Database>(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return cookieStore.getAll();
+        },
+        setAll(cookiesToSet) {
+          try {
+            cookiesToSet.forEach(({ name, value, options }) =>
+              cookieStore.set(name, value, options),
+            );
+          } catch {
+            // Duoc goi tu Server Component (khong the set cookie) — bo qua,
+            // vi middleware.ts da lo refresh session roi.
+          }
+        },
+      },
+    },
+  );
 }

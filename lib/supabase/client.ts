@@ -1,17 +1,16 @@
 "use client";
 
-import { createClient } from "@supabase/supabase-js";
+import { createBrowserClient } from "@supabase/ssr";
 import type { Database } from "@/lib/types";
 
-const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!;
-
 /**
- * Client dung trong Client Components. Chua can cho MVP (audio player
- * chi phat url duoc truyen tu server), du phong cho tinh nang sau nay
- * (yeu thich, tien do hoc...).
+ * Client dung trong Client Components. Goi ham nay moi lan can dung
+ * (thu vien tu quan ly singleton ben trong), khong tao bien module-level
+ * de tranh giu session cu qua HMR.
  */
-export const supabaseBrowserClient = createClient<Database>(
-  url,
-  publishableKey,
-);
+export function createBrowserSupabaseClient() {
+  return createBrowserClient<Database>(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+  );
+}
